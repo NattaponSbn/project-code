@@ -19,59 +19,157 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/app.css">       
+        <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+        <!-- Twitter meta-->
+        <!-- Open Graph Meta-->
+        <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+        <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+        <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Main CSS-->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!-- Font-icon css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">       
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         
         <title>ICTSTORE</title>
+
+        <style>
+           .user-size {
+                width: 23%;
+                margin-top: -3px;
+                margin-right: 30px;
+                margin-left: 30px;
+                padding-bottom: -10%;
+           }
+
+           .content{
+                margin-top: 8px;
+           }
+
+           .search-left{
+                margin-left: 50px;
+           }
+
+           .top {
+                margin-top: 5px;
+           }
+
+           .btn-login {
+                margin-top: 3px;
+           }
+
+           .name-scle{
+                font-size: 16px;
+                color: #FFFFFF;
+                -ms-flex-item-align: center;
+                    align-self: center;
+                margin-top: -30px;
+                margin-left: 90px;
+           }
+
+           body {
+               background-image: url("img/background-MDD.jpg");
+               height: 100%; 
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: cover;
+           }
+
+           html {
+               background-image: url("img/background-body-left.jpg");
+               height: 100%; 
+               background-position: center 550px;
+               background-repeat: no-repeat;
+               background-size: cover;
+           }
+
+        </style>
     </head>
     <body class="app sidebar-mini ">
         <header class="app-header">
             <a href="homeMDD" class="app-header__logo">ICTSTORE</a>
             <!-- main.css-->
             <ul class="app-nav">
-                <li class="app-search">
+                <li class="app-search search-left">
                     <input class="app-search__input" type="search" placeholder="ค้นหาวิจัย โครงงาน วิทยานิพน">
                     <button class="app-search__button"><i class="fa fa-search"></i></button>
                 </li>
-                <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+                
                 <nav class="app-navmenu" >    
                     <li class="active1 menulink" ><a href="homeBD">หน้าเเรก</a></li>
                     <li class="active2 menulink"><a href="#">ค้นหาเเบบละเอียด</a></li>
                     <li class="active3 menulink"><a href="#">เกี่ยวกับ</a></li>
                     <li class="active4 menulink"><a href="#">ติดต่อ</a></li>
                 </nav>
-            </ul>
-            
-            <ul class="navbar-nav ml-auto">
-                 <!-- Authentication Links -->
-                @guest
-                                
-                @if (Route::has('register'))
+            <div class="navbar-dark layoutaccout">
+                <ul class="navbar-nav ml-auto ml-md-0">
                         
-                @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                             {{ __('ออกจากระบบ') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                        </form>
-                    </div>
-                    </li>
+                    @guest
+                        @if (Route::has('login'))
+                            <div class="front nav-item">
+                                <button class="btn-login"><a href="{{ route('login') }}" class="dropdown-item" >เข้าสู่ระบบ</a></button>
+                            </div>
+                        @endif
+                            
+                        @else
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="user-area col-sm-5 user-avatar rounded-circle user-size" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="User Avatar">
+                                    <div class="name-scle dropdown-toggle">{{ Auth::user()->name }}</div> 
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    <ul class="navbar-nav ml-auto">
+                                        <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <center><div class="image">
+                                                <a href="profile">
+                                                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" class="user-avatar rounded-circle"/>
+                                                </a>
+                                            </div></center>
+                                            <div class="content">
+                                                <h5 class="name">
+                                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                                </h5>
+                                                <span class="email">{{ Auth::user()->email }}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <a href="profile" class="top dropdown-item"><i class="zmdi zmdi-account"></i>โปรไฟล์</a>
+                                            
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('ออกจากระบบ') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </ul>
+                                </div>
+                                </li>
                     @endguest
-            </ul>
+                                    
+                </ul>
+            </div>
         </header>
            
         <div class="app-sidebar__overlay" data-toggle="sidebar" aria-label="Hide Sidebar"></div>
@@ -152,29 +250,18 @@
                             }
                     </style>
                     <p><hr></p>
-                    
-                    <div class="layoutlogre">
-                    @if (Route::has('login'))
-                        <div class="links front">
-                            @auth
-                                <a href="{{ url('/home') }}" >ออกระบบ</a><br>
-                            @else
-                            
-                                <a href="{{ route('login') }}" >เข้าสู่ระบบ</a><br>
-
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}">สมัครสมาชิก</a><br>
-                                @endif
+                        <div class="layoutlogre">
+                            @if (Route::has('login'))
+                                <div class="links front">
+                                    @auth
+                                        <a href="addproject" class="view">สร้างผลงาน</a><br>
+                                    @else
+                                        
+                                    @endauth
                                 
-                            @endauth
-                           
-                            <a href="{{ url('dataview') }}" class="view">ดูรายละเอียดผู้ใช้</a><br>
+                                </div>
+                            @endif
                         </div>
-                    @endif
-                    </div>
-                    
-                    
-
                     </ul>
                     </li>
                 </aside>

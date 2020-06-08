@@ -28,13 +28,67 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         
         <title>ICTSTORE</title>
+
+        <style>
+           .user-size {
+                width: 23%;
+                margin-top: -3px;
+                margin-right: 30px;
+                margin-left: 30px;
+                padding-bottom: -10%;
+           }
+
+           .content{
+                margin-top: 8px;
+           }
+
+           .search-left{
+                margin-left: 50px;
+           }
+
+           .top {
+                margin-top: 5px;
+           }
+
+           .btn-login {
+                margin-top: 3px;
+           }
+
+           .name-scle{
+                font-size: 16px;
+                color: #FFFFFF;
+                -ms-flex-item-align: center;
+                    align-self: center;
+                margin-top: -30px;
+                margin-left: 90px;
+           }
+
+           body {
+               background-image: url("img/background-body.jpg");
+               height: 100%; 
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: cover;
+           }
+
+           html {
+               background-image: url("img/background-body-left.jpg");
+               height: 100%; 
+               background-position: center 550px;
+               background-repeat: no-repeat;
+               background-size: cover;
+           }
+               
+           
+
+        </style>
     </head>
     <body class="app sidebar-mini " >
         <header class="app-header">
             <a href="homeBD" class="app-header__logo" >ICTSTORE</a>
             <!-- main.css-->
             <ul class="app-nav">
-                <li class="app-search">
+                <li class="app-search search-left">
                     <input class="app-search__input" type="search" placeholder="ค้นหาวิจัย โครงงาน วิทยานิพน">
                     <button class="app-search__button"><i class="fa fa-search"></i></button>
                 </li>
@@ -46,48 +100,58 @@
                 </nav>
                 <div class="navbar-dark layoutaccout">
                     <ul class="navbar-nav ml-auto ml-md-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <ul class="navbar-nav ml-auto">
-                                        @guest
-                                            @if (Route::has('login'))
-                                                <div class="front nav-item">
-                                                    <a href="{{ route('login') }}" class="dropdown-item">เข้าสู่ระบบ</a>
-                                                    @if (Route::has('register'))
-                                                        <a href="{{ route('register') }}" class="dropdown-item">สมัครสมาชิก</a>
-                                                    @endif
-                                                </div>
-                                            @endif
-                                                @auth
-                                                    <a href="{{ route('login') }}" class="dropdown-item">เข้าสู่ระบบ</a>
-                                                    <a href="{{ route('register') }}" class="dropdown-item">สมัครสมาชิก</a>
-                                                @endauth
-                                            @else
-                                                
-                                                <a id="navbarDropdown" class="dropdown-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                    {{ Auth::user()->username }} <span class="caret"></span>
-                                                </a>
-                                            
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                        {{ __('ออกจากระบบ') }}
-                                                </a>
-                                                <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;">
-                                                    @csrf
-                                                </form>
-                                        @endguest
-                                        
-                                    </ul>
+                        
+                        @guest
+                            @if (Route::has('login'))
+                                <div class="front nav-item">
+                                    <button class="btn-login"><a href="{{ route('login') }}" class="dropdown-item" >เข้าสู่ระบบ</a></button>
                                 </div>
-                        </li>
+                            @endif
+                                
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link " id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class="user-area col-sm-5 user-avatar rounded-circle user-size" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="User Avatar">
+                                        <div class="name-scle dropdown-toggle">{{ Auth::user()->name }}</div> 
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                        <ul class="navbar-nav ml-auto">
+                                            <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <center><div class="image">
+                                                    <a href="profile">
+                                                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" class="user-avatar rounded-circle"/>
+                                                    </a>
+                                                </div></center>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                                    </h5>
+                                                    <span class="email">{{ Auth::user()->email }}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="profile" class="top dropdown-item"><i class="zmdi zmdi-account"></i>โปรไฟล์</a>
+                                                
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('ออกจากระบบ') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </ul>
+                                    </div>
+                                    </li>
+                        @endguest
+                                        
                     </ul>
                 </div>
                 <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
         </header>
             <div class="app-sidebar__overlay" data-toggle="sidebar" aria-label="Hide Sidebar"></div>
-                <aside class="app-sidebar mage ">
+                <aside class="app-sidebar  ">
                     <ul class="app-menu">
                         <li>
                             <div id="layoutSidenav">

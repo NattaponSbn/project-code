@@ -71,16 +71,3 @@
     </div>
 </body>
 </html>
-
-<div class="layoutlogre">
-                            @if (Route::has('login'))
-                                <div class="links front">
-                                    @auth
-                                        <a href="addproject1" class="view">สร้างผลงาน</a><br>
-                                    @else
-                                        
-                                    @endauth
-                                    
-                                </div>
-                            @endif
-                        </div>

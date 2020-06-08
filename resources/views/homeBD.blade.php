@@ -9,13 +9,13 @@
                     <div class="texthe1">มาใหม่</div>
                     <button class="btnsum"><a href="Newarrival">ดูทั้งหมด</a></button>
                     <div class="table-responsive ">
-                        @foreach($datas as $datauser) 
-                            <a href="http://"><div class="column column1 column2 column3" ><div class="columnimg"><img src="img/fromimg.png" alt="" class="fromimg"></div></a>
-                                <center><a href="http://"><div class="textimg">{{$datauser->name}}</div></a></center>
-                                <center><a href="http://"><div class="textimg2">{{$datauser->gender}}</div></a></center>
+                        
+                            <a href="http://"><div class="column" ><div class="columnimg"><img src="img/fromimg.png" alt="" class="fromimg"></div></a>
+                                <center><a href="http://"><div class="textimg"></div></a></center>
+                                <center><a href="http://"><div class="textimg2"></div></a></center>
                             </div>
-                        @endforeach
-                            <!-- <a href="http://"><div class="column1"><div class="columnimg"><img src="img/fromimg.png" alt="" class="fromimg"></div></a>
+                        
+                            <a href="http://"><div class="column1"><div class="columnimg"><img src="img/fromimg.png" alt="" class="fromimg"></div></a>
                                 <center><a href="http://"><div class="textimg">เรื่อง</div></a></center>
                                 <center><a href="http://"><div class="textimg2">ประเภท</div></a></center>
                             </div>
@@ -27,7 +27,7 @@
                             <a href="http://"><div class="column3"><div class="columnimg"><img src="img/fromimg.png" alt="" class="fromimg"></div></a>
                                 <center><a href="http://"><div class="textimg">เรื่อง</div></a></center>
                                 <center><a href="http://"><div class="textimg2">ประเภท</div></a></center>
-                            </div> -->
+                            </div>
                            
                         </div>
                     </div>

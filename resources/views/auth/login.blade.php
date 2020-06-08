@@ -53,7 +53,10 @@
 
 
                         <div class="form-group row mb-0">
+            
+                            
                             <div class="col-md-8 offset-md-4">
+                                <a class="btn btn-link" href="{{ route('register') }}">สร้างบัญชี</a>
                                 <button type="submit" class="btn btn-primary">
                                     ล็อกอิน
                                 </button>

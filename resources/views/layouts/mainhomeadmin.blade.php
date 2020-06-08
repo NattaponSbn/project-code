@@ -24,13 +24,22 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <!-- js ของสไล์ account -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Main CSS-->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!-- Font-icon css-->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
         
         <title>ICTSTORE</title>
     </head>
-    <body class="app sidebar-mini ">
+    <body class="app sidebar-mini">
         <header class="app-header">
-            <a href="homeBD" class="app-header__logo" >ICTSTORE</a>
+            <a href="admin" class="app-header__logo" >ICTSTORE</a>
             <!-- main.css-->
             <ul class="app-nav">
                 <li class="app-search">
@@ -46,33 +55,41 @@
                 </nav>
             </ul>
             
-            <ul class="navbar-nav ml-auto">
-                 <!-- Authentication Links -->
-                @guest
-                                
-                @if (Route::has('register'))
-                        
-                @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                             {{ __('ออกจากระบบ') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                        </form>
-                    </div>
-                    </li>
-                    @endguest
-            </ul>
+            <div class="navbar-dark layoutaccout">
+                    <ul class="navbar-nav ml-auto ml-md-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    <ul class="navbar-nav ml-auto">
+                                        @guest
+                                            @if (Route::has('login'))
+                                                <div class="front nav-item">
+                                                    <a href="{{ route('login') }}" class="dropdown-item">เข้าสู่ระบบ</a>
+                                                </div>
+                                            @endif
+                                                @auth
+                                                    <a href="{{ route('login') }}" class="dropdown-item">เข้าสู่ระบบ</a>
+                                                @endauth
+                                            @else
+                                                
+                                                <a id="navbarDropdown" class="dropdown-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    {{ Auth::user()->username }} <span class="caret"></span>
+                                                </a>
+                                            
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                        {{ __('ออกจากระบบ') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                        @endguest   
+                                    </ul>
+                                </div>
+                        </li>
+                    </ul>
+                </div>
         </header>
            
             <div class="app-sidebar__overlay" data-toggle="sidebar" aria-label="Hide Sidebar"></div>
@@ -85,57 +102,21 @@
                                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                                     <div class="sb-sidenav-menu">
                                         <div class="nav">
-                                            <div>
-                                                <button type="button" class="btn-control btn-default" ><a href="homeBD">ปริญญาตรี</a> </button>
-                                                <button type="button" class="btn-control btn-default" ><a href="homeMDD">ปริญญาเอก โท</a> </button>
-                                            </div><br>
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
-                                                    > เว็บ
-                                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                                </a>
-                                                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                                            <a class="nav-link" href="#">ติดตาม</a>
-                                                            <a class="nav-link" href="#">ดูเเละสุขภาพ</a>
-                                                            <a class="nav-link" href="#">ไร่สวน</a>
-                                                        </nav>
-                                                </div>
-
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
-                                                    >เว็บ&เว็บแอปพลิเคชั่น
-                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                                </a>
-                                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                                    <nav class="sb-sidenav-menu-nested nav ">
-                                                        <a class="nav-link" href="#">ติดตาม</a>
-                                                        <a class="nav-link" href="#">ดูเเละสุขภาพ</a>
-                                                        <a class="nav-link" href="#">ไร่สวน</a>
-                                                    </nav>
-                                                </div>
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
-                                                    >แอปพลิเคชั่น
-                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                                ></a>
-                                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                                    <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="#">ติดตาม</a>
-                                                        <a class="nav-link" href="#">ดูเเละสุขภาพ</a>
-                                                        <a class="nav-link" href="#">ไร่สวน</a>
-                                                    </nav>
-                                                </div>
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
-                                                    >เกม
-                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                                ></a>
-                                                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                                    <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="#">ผจญภัย</a>
-                                                        <a class="nav-link" href="#">ยุทธศาสตร์</a>
-                                                        <a class="nav-link" href="#">ปริศนา</a>
-                                                        <a class="nav-link" href="#">กีฬา</a>
-                                                        <a class="nav-link" href="#">เเอ็กชัน</a>
-                                                    </nav>
-                                                </div>
+                                            <div class="layoutlogre">
+                                                @if (Route::has('login'))
+                                                    <div class="links front">
+                                                        @auth
+                                                            <a href="{{ url('dataview') }}" class="view">ดูรายละเอียดผู้ใช้</a><br>
+                                                            <a href="addproject1" class="view">สร้างผลงาน</a><br>
+                                                        @else
+                                                            <a href="{{ url('dataview') }}" class="view">เช็ครายละเอียดผู้ใช้</a><br>
+                                                            <a href="{{ url('dataview') }}" class="view">คำขอสร้างผลงาน</a><br>
+                                                            <a href="{{ url('dataview') }}" class="view">เพิ่มผู้ดูเเล</a><br>
+                                                        @endauth
+                                                    
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </nav>
@@ -156,29 +137,24 @@
                     <p><hr></p>
                     
                     <div class="layoutlogre">
-                    @if (Route::has('login'))
-                        <div class="links front">
-                            @auth
-                                <a href="{{ url('/home') }}" >ออกระบบ</a><br>
-                            @else
+                        @if (Route::has('login'))
+                            <div class="links front">
+                                @auth
+                                    <a href="{{ url('dataview') }}" class="view">ดูรายละเอียดผู้ใช้</a><br>
+                                    <a href="addproject1" class="view">สร้างผลงาน</a><br>
+                                @else
+                                    <a href="{{ url('dataview') }}" class="view">เช็ครายละเอียดผู้ใช้</a><br>
+                                @endauth
                             
-                                <a href="{{ route('login') }}" >เข้าสู่ระบบ</a><br>
- 
-                            @endauth
-                           
-                            <a href="{{ url('dataview') }}" class="view">ดูรายละเอียดผู้ใช้</a><br>
-                            <a href="addproject1" class="view">สร้างผลงาน</a><br>
-                        </div>
-                    @endif
+                            </div>
+                        @endif
                     </div>
-                    
-                    
-
                     </ul>
                     </li>
                 </aside>
+            </div>
 
-                <div>@yield('content')</div>
+        <div>@yield('content')</div>
 
                 
         <script src="{{ asset('js/app.js') }}" defer></script>

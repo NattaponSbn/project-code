@@ -329,6 +329,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  
 }
 
 button,
@@ -1070,7 +1071,7 @@ pre code {
 
 .fromimg {
   margin-left: -11px;
-  margin-top: -11px;
+  margin-top: -10px;
   
 }
 
@@ -2810,10 +2811,11 @@ textarea.form-control {
 
 .layoutgender-size {
   width: 30%;
+  
 }
 
 .layoutprovince-size {
-  width: 45%;
+  width: 30%;
 }
 
 .layoutnom-size {
@@ -4020,6 +4022,7 @@ input[type=button].btn-block {
 }
 
 .dropdown-menu {
+  width: 250px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -5036,6 +5039,7 @@ input[type=button].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  
 }
 
 .nav-link:hover,

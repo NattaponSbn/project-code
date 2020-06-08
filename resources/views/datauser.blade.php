@@ -1,26 +1,26 @@
-@extends('layouts.mainhomeBD')
+@extends('layouts.mainhomeadmin')
         
 
         <main class="app-content">
             <div class="app-title">
                 <div>
-                <h1><i class="fa fa-th-list"></i> Data User</h1>
-               
+                    <h1><i class="fa fa-th-list"></i>รายละเอียดผู้ใช้</h1>
                 </div>
                 <ul class="app-breadcrumb breadcrumb side">
-                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-                
+                    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active"><a href="#">รายละเอียดผู้ใช้</a></li>
                 </ul>
             </div>
-            <!-- เเสดงเเจ้งเตือนว่าข้อมูลถูกลบเรียบร้อยเเล้ว -->
-            <div align="right"><a href="http://" class="btn btn-success">เพิ่มข้อมูล</a></div>
-            @if(\Session::has('success')) 
-            <div class="alert alert-success"> 
-            <p>{{ \Session::get('success') }}</p> 
-            </div> 
-            @endif 
+            
+            <div align="right"><a href="adduser" class="btn btn-success">เพิ่มข้อมูล</a></div>
+
+                <!-- เเสดงเเจ้งเตือนว่าข้อมูลถูกลบเรียบร้อยเเล้ว -->
+                @if(\Session::has('success')) 
+                    <div class="alert alert-success"> 
+                    <p>{{ \Session::get('success') }}</p> 
+                    </div> 
+                @endif 
 
             <div class="row">
                 <div class="col-md-12">
@@ -37,9 +37,10 @@
                                 <th>จังหวัด</th>
                                 <th>อีเมล</th>
                                 <th>ชื่อผู้ใช้</th>
-                                <th>รหัสผ่าน</th>
-                                <th>วันเดือนปี</th>
                                 <th>สถานะ</th>
+                                <!-- <th>รหัสผ่าน</th> -->
+                                <th>วันเดือนปี</th>
+                                
                                 <th>จัดการ</th>
                             </tr>
                         </thead>
@@ -52,13 +53,14 @@
                                 <td>{{$datauser->province}}</td>
                                 <td>{{$datauser->email}}</td>
                                 <td>{{$datauser->username}}</td>
-                                <td>{{$datauser->password}}</td>
-                                <td>{{$datauser->created_at}}</td>
                                 <td>1</td>
+                                <!-- <td>{{$datauser->password}}</td> -->
+                                <td>{{$datauser->created_at}}</td>
+                                
                                 <td>
-                                    <a href="http://"><button type="submit"><img src="img/edit.png" alt="" class="imgdata"></button></a>
+                                    <a onClick="return confirm('การเเก้ไขข้อมูลจะต้องเช็คความถูกต้องทุกครั้งก่อนที่จะทำการบันทึก')" href="edit/{{$datauser->id}}"><button type="submit"><img src="img/edit.png" alt="" class="imgdata"></button></a>
                                     
-                                    <a onClick="return confirm('คุณต้องการลบข้มูลใช่หรือไม่?')" href="delete/{{ $datauser->id }}"><button type="submit"><img  src="img/trash.png" alt="" class="imgdata"></button></a>
+                                    <a onClick="return confirm('คุณต้องการลบข้อมูลใช่หรือไม่?')" href="delete/{{ $datauser->id }}"><button type="submit"><img  src="img/trash.png" alt="" class="imgdata"></button></a>
 
                                 </td>
                             </tr>

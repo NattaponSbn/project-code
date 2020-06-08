@@ -2761,6 +2761,8 @@ fieldset:disabled a.btn {
   border-color: #ffc107;
 }
 
+
+
 .btn-warning:hover {
   color: #212529;
   background-color: #e0a800;
@@ -3450,6 +3452,7 @@ input[type="button"].btn-block {
 .dropdown-menu[x-placement^="top"], .dropdown-menu[x-placement^="right"], .dropdown-menu[x-placement^="bottom"], .dropdown-menu[x-placement^="left"] {
   right: auto;
   bottom: auto;
+  le
 }
 
 .dropdown-divider {
@@ -3470,6 +3473,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  
 }
 
 .dropdown-item:first-child {
@@ -14921,6 +14925,7 @@ be a descendant of the grid when it is being dragged.
   display: -ms-flexbox;
   display: flex;
   background-color: #D9A327;
+  opacity: 0.88;
   z-index: 1030;
   padding-right: 15px;
 }
@@ -14958,6 +14963,7 @@ be a descendant of the grid when it is being dragged.
     display: block;
     width: 230px;
     background-color: #D9A327;
+    
   }
 }
 
@@ -15040,7 +15046,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .app-navmenu {
-  margin-left: -50px;
+  margin-left: -10px;
   display: flex;
   -ms-flex-item-align: center;
       align-self: center;
@@ -15050,6 +15056,7 @@ be a descendant of the grid when it is being dragged.
 .active1 {
   margin-right: 10px;
   margin-left: -600px;
+  
   
 }
 
@@ -15119,7 +15126,7 @@ be a descendant of the grid when it is being dragged.
 .app-search__input {
   border: 0;
   padding: 5px 10px;
-  padding-right: 300px;
+  padding-right: 200px;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.8);
   -webkit-transition: background-color 0.3s ease;
@@ -15230,10 +15237,13 @@ be a descendant of the grid when it is being dragged.
   padding-top: 80px;
   padding: 10px;
   width: 240px;
+  height: 450px;
   overflow: auto;
   z-index: 10;
   border-color: 1px solid #707070;
-  background-color: #D9A327;
+  background-color: #D9A327 ;
+  opacity: 0.88;
+  
   -webkit-transition: left 0.3s ease,
  width 0.3s ease;
   -o-transition: left 0.3s ease,
@@ -16199,6 +16209,7 @@ be a descendant of the grid when it is being dragged.
 .widget-small.primary.coloured-icon .icon {
   background-color: #009688;
   color: #fff;
+  
 }
 
 .widget-small.info {
@@ -16856,3 +16867,32 @@ be a descendant of the grid when it is being dragged.
 .user .user-settings label {
   color: #666;
 }
+
+.user-area {
+  padding-right: 0;
+  position: relative;
+
+ }
+  .user-area .user-avatar {
+    float: right;
+    margin-top: 4px;
+    width: 10px; }
+  .user-area .user-info .name {
+    color: #8c8c8c;
+    font-size: 14px;
+    position: relative;
+    text-transform: uppercase; }
+  .user-area .count {
+    background: #d9534f;
+    border-radius: 50%;
+    color: #fff;
+    font-family: 'Open Sans';
+    font-size: 9px;
+    font-weight: 700;
+    float: right;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center; }
+  .user-area .dropdown-toggle:after {
+    display: none; }
