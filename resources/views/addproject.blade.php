@@ -21,18 +21,23 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>  
     <title>addproject</title>
     <style>
         .body1 {
-            padding-top: 30px;
-            background-color: #982ACF;
+            background-image: url("img/background-body-addproject-3.jpg");
         }
         .textadd {
+            margin-top: 10px;
             padding-left: 20px;
             padding-right: 20px;
-            font-size: 18px;
-            color: white;
+            font-size: 25px;
+            color: black;
         }
         .border1 {
             padding-top: 8px;
@@ -48,7 +53,8 @@
         }
 
         .tile {
-            background-color: #7CE1B5;
+            /* background-color: #7CE1B5; */
+            background-image: url("img/background-body-addproject-4.jpg");
             margin-left: 200px;
             margin-right: 200px;
             
@@ -81,6 +87,12 @@
 
         .btnn {
             background-color: #00CCFF;
+        }
+
+        .btnnn {
+            margin-top: 20px;
+            margin-left: 278px;
+            background-color: darkgrey;
         }
 
         input {
@@ -116,7 +128,7 @@
         }
 
         button {
-            margin-top: 10px;
+            
             background-color: #4CAF50;
             color: #ffffff;
             border: none;
@@ -156,91 +168,153 @@
             height: 100px;
         }
 
+        .input-tb {
+            width: 28.9%;
+            height: 100px;
+        }
+
+        .select-tbb {
+            width: 28.9%;
+        }
+
+        .select-tbbb {
+            width: 29%;
+        }
+
+        .select-tbbbb {
+            width: 30%;
+        }
+
+        .select-tbbbbbb {
+            width: 32%;
+        }
+
+        .input-tbb {
+            width: 29.1%;
+        }
+        .input-tbbb {
+            width: 30.3%;
+        }
+
+        .input-tbbbb {
+            width: 29.9%;
+        }
+
     </style>
 </head>
 <body class="body1">
-        <div class="border1">
-            <h2><div class="containeradd textadd" >กรอกรายละเอียดผลงาน</div></h2>
-        </div>
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                เกิดข้อผิดพลาด<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dissmiss="alert">x</button>
+                    <strong>{{$message}}</strong>
+            </div>
+        @endif
         <div class="border2">
             <div class="tile">
                 <div class="tile-body">
                     <div class="containeradd ">
-                        <form id="addprojectfrom" action="submit" method="GET">
-                            <div style="text-align:center;margin-top:40px;">
-                                <span class="step font">1</span>
-                                <span class="step font">2</span>
-                                <span class="step font">3</span>
-                               
-                            </div>
-            
-                            <div class="tab">
-                                <center><label for="text" class="">ขั้นตอนที่ 1</label><br>
-                                ชื่อเรื่อง: <input type="text" name="nproject" oninput="this.className = ''"><br>
-                                คำอธิบายย่อ: <input type="text" name="dproject" oninput="this.className = ''"><br>
-                                    <label for="text" class="">ข้อมูลติดต่อ</label><br>
-                                    Facebook: <input type="text" name="facebook" oninput="this.className = ''"><br>
-                                    Email: <input type="email" name="email" oninput="this.className = ''"><br>
-                                    เบอร์โทร: <input type="number" name="phone" oninput="this.className = ''"><br>
-                                </center>
-                            </div>
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step font">1</span>
+                            <span class="step font">2</span>
+                            <span class="step font">3</span>
+                        
+                        </div>
+                        <center><h1><div class="containeradd textadd" >กรอกรายละเอียดผลงาน</div></h1></center>
+                        <form id="addprojectfrom" action="adddataproject" method="POST" enctype="multipart/form-data">
+                        @csrf    
+                        <script language="JavaScript">
+                            function showPreview(ele)
+                            {
+                                    $('#showimage').attr('src', ele.value); // for IE
+                                    if (ele.files && ele.files[0]) {
+                                        var reader = new FileReader();
+                                        
+                                        reader.onload = function (e) {
+                                            $('#showimage').attr('src', e.target.result);
+                                        }
 
-                            <div class="tab">
-                                <center><label for="text" class="">ขั้นตอนที่ 2</label><br>
-                                    <label for="text" class="">เกี่ยวกับผลงาน</label><br>
-                                    <label for="text">ชนิดเอกสาร: </label>
-                                        <select name="typeproject" id="" oninput="this.className = ''">
+                                        reader.readAsDataURL(ele.files[0]);
+                                    }
+                            }
+                        </script>
+
+                        <div class="tab">
+                                <center><label for="text" class="" style="margin-top: -5px;">ขั้นตอนที่ 1</label><br></center>
+                                <center><label for="text" class="">เกี่ยวกับผลงาน</label><br></center>
+                                <center style="margin-top:10px;margin-left:-40px;">ชื่อเรื่อง: <input type="text" class="" name="project_name" id="project_name" oninput="this.className = ''"><br></center>
+                                <center style="margin-top:10px;margin-left:-71px;">คำอธิบายย่อ: <input type="text" class="input-tb" name="des_project" id="des_project" oninput="this.className = ''"><br></center>
+                                <center style="margin-top:10px;margin-left:-63px;">ชนิดเอกสาร: <select name="type_project" class="select-tbb" id="" oninput="this.className = ''">
                                             <option value="">เลือกชนิดเอกสาร</option>
                                             <option value="วิจัย">วิจัย</option>
-                                        </select><br>
-                                    <label for="text">ประเภท: </label>
-                                        <select name="catproject" id="" oninput="this.className = ''">
+                                        </select><br></center>
+                                <center style="margin-top:10px;margin-left:-40px;">ประเภท: <select name="genre_project" class="select-tbbb" id="" oninput="this.className = ''">
                                             <option value="">เลือกประเภท</option>
                                             <option value="หนังสือ">หนังสือ</option>
-                                        </select><br>
-                                    <label for="text">หมวดหมู่: </label>
-                                        <select name="catri" id="" oninput="this.className = ''">
+                                        </select><br></center>
+                                <center style="margin-top:10px;margin-left:-50px;">หมวดหมู่: <select name="category_project" class="select-tbbbb" id="" oninput="this.className = ''">
                                             <option value="">เลือกหมวดหมู่</option>
                                             <option value="การศึกษา">การศึกษา</option>
-                                        </select><br>
-                                    <label for="text">สาขา: </label>
-                                        <select name="saka" id="" oninput="this.className = ''">
+                                        </select><br></center>
+                                <center style="margin-top:10px;margin-left:-30px;">สาขา: <select name="branch_project" class="select-tbbbbb" id="" oninput="this.className = ''">
                                             <option value="">เลือกสาขา</option>
                                             <option value="วิทยาการคอมพิวเตอร์">วิทยาการคอมพิวเตอร์</option>
-                                        </select><br>
-                                        </center>
-                                </div>
+                                        </select><br></center>
+                                <a href="homeBD"><button type="button" class="btnnn ">ย้อนกลับ</button></a>
+                                
+                            </div>
 
-                                <center>
-                                    <div class="tab">
-                                        <label for="text" class="">ขั้นตอนที่ 3</label><br>
-                                            <label for="text" class="">ภาพ (ถ้ามี)</label><br>
-                                                <input type="file" name="fileimgToUpload" id="fileToUpload" class="imgup"><br>
-    
-                                        <label for="text" class="">อัพโหลดไฟล์เอกสารตัวเต็ม</label><br>
-                                                <input type="file" name="fileToUpload" id="fileToUpload">
-                                    </div>
-                                </center>
-                           
+                            <div class="tab">
+                                <center><label for="text" class="">ขั้นตอนที่ 2</label><br></center>
+                                <center><label for="text" class="">ข้อมูลติดต่อ</label><br></center>
+                                <center style="margin-top:10px;margin-left:-63px;">Facebook: <input type="text" class="input-tbb" name="facebook" id="facebook" oninput="this.className = ''"><br></center>
+                                <center style="margin-top:10px;margin-left:-35px;">Email: <input type="email" class="input-tbbb" name="email" id="email" oninput="this.className = ''"><br></center>
+                                <center style="margin-top:10px;margin-left:-55px;">เบอร์โทร: <input type="phone" class="input-tbbbb" name="phone" id="phone" oninput="this.className = ''"><br></center>               
+                            </div>
 
-                            <div style="overflow:auto;">
+                            <center><div class="tab">
+                            <label for="text" class="">ขั้นตอนที่ 3</label><br>
+                            <div class="col-md-4">
+                                <img id="showimage" style="background:#9d9d9d;width:170px;height:180px;">
+                            </div>
+
+                            <label for="text" class="">ภาพ ถ้ามี</label><span class="text-muted">(.PNG)</span><br>
+                                <input type="file" name="fileimgToUpload" id="fileimgToUpload" class="" OnChange="showPreview(this)"><br>
+
+                            <label for="text" class="">อัพโหลดไฟล์เอกสารตัวเต็ม </label><span class="text-muted">(.PDF)</span><br>
+                                    <input type="file" name="fileToUpload" id="fileToUpload">
+                            </div></center>
+
+                            
+                            <div style="overflow:10px;">
                                 <div style="float:center;">
-                                    <center><button type="button" id="prevBtn" class="btnp" onclick="nextPrev(-1)">ย้อนกลับ</button>
+                                    <button type="button" id="prevBtn" class="btnp btnnn" onclick="nextPrev(-1)">ย้อนกลับ</button>
+                                </div>
+                                <div style="float:left; margin-left: 380px; margin-top: -41px;">
                                     <button type="button" id="nextBtn" class="btnn" onclick="nextPrev(1)">ถัดไป</button>
-                                    </center>
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
 
+
         <script>
             var currentTab = 0; // Current tab is set to be the first tab (0)
             showTab(currentTab); // Display the current tab
-
             function showTab(n) {
                 // This function will display the specified tab of the form...
                 var x = document.getElementsByClassName("tab");
@@ -252,14 +326,20 @@
                     document.getElementById("prevBtn").style.display = "inline";
                 }
                 if (n == (x.length - 1)) {
-                    document.getElementById("nextBtn").innerHTML = "ยืนยัน";
-                } else {
+                    document.getElementById("nextBtn").innerHTML = "ยืนยัน";  
+                    if (n == (x.length - 3)) {
+                        document.getElementById("nextBtn").style.display = "ยืนยัน";
+                        if (n == (x.length - 3)) {
+                            document.getElementById("uploadBtn").innerHTML = "อัพโหลด"; 
+                        }
+                         
+                    }                   
+                }else {
                     document.getElementById("nextBtn").innerHTML = "ถัดไป";
                 }
                 //... and run a function that will display the correct step indicator:
                 fixStepIndicator(n)
             }
-
             function nextPrev(n) {
                 // This function will figure out which tab to display
                 // นำค่าที่ได้จาก class tab มาเก็บไว้ที่ตัวเเปร x
@@ -282,6 +362,28 @@
                 showTab(currentTab);
             }
 
+
+            function uploadPrev(n) {
+                // This function will figure out which tab to display
+                // นำค่าที่ได้จาก class tab มาเก็บไว้ที่ตัวเเปร x
+                var x = document.getElementsByClassName("tab");
+                // Exit the function if any field in the current tab is invalid:
+                //เช็คข้อมูลว่ามีใน textbox หรือไม่ ไปเช็คที่ฟังก์ชัน validateForm เเละ retrun false ไป 
+                if (n == 1 && !validateForm()) return false;
+                // Hide the current tab:
+                
+                x[currentTab].style.display = "none";
+                // Increase or decrease the current tab by 1:
+                currentTab = currentTab + n;
+                // if you have reached the end of the form...
+                if (currentTab >= x.length) {
+                    // ... the form gets submitted:
+                    document.getElementById("addeprojectfrom").submit();
+                    return false;
+                }
+                // Otherwise, display the correct tab:
+                showTabupload(currentTab);
+            }
             function validateForm() {
                 // This function deals with validation of the form fields
                 var x, y, i, z, valid = true;
@@ -298,7 +400,6 @@
                     valid = false;
                     }
                 }
-
                 for (i = 0; i < z.length; i++) {
                     // If a field is empty...
                     if (z[i].value == "") {
@@ -314,7 +415,6 @@
                 }
                 return valid; // return the valid status
             }
-
             function fixStepIndicator(n) {
                 // This function removes the "active" class of all steps...
                 var i, x = document.getElementsByClassName("step");
@@ -325,8 +425,9 @@
                 x[n].className += " active";
             }
 
+           
         </script>
-        
+
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

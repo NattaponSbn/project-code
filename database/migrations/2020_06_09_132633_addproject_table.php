@@ -14,9 +14,16 @@ class AddprojectTable extends Migration
     public function up()
     {
         Schema::create('addproject', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_p');
-            $table->string('d_project');
+            $table->id('project_id');
+            $table->string('project_name');
+            $table->string('des_project');
+            $table->string('facebook');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('type_project');
+            $table->string('genre_project');
+            $table->string('category_project');
+            $table->string('branch_project');
             $table->timestamps();
         });
     }

@@ -52,23 +52,27 @@
     </style>
 </head>
 <body>
-    <center><div class="col-sm-10 layout-header"><h1>โปรไฟล์</h1></div></center>
-    	
-    <div class="row">
-  		<div class="col-sm-3 layout-imgup"><!--left col-->
-            <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                <h6>อัพโหลดรูปภาพของคุณ...</h6>
-                <input type="file" class="text-center center-block file-upload">
-            </div></hr><br>
-        </div><!--/col-3-->
 
-        @if(\Session::has('success')) 
+    @if(\Session::has('success')) 
             <div class="alert alert-success"> 
             <p>{{ \Session::get('success') }}</p> 
             </div> 
         @endif 
 
+    <form action="uploadimg" method="POST" enctype="multipart/form-data">
+    @csrf
+    <center><div class="col-sm-10 layout-header"><h1>โปรไฟล์</h1></div></center>
+    <div class="row">
+  		<div class="col-sm-3 layout-imgup"><!--left col-->
+            <div class="text-center">
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" name="showimg" class="avatar img-circle img-thumbnail" alt="imgupload">
+                <h6>อัพโหลดรูปภาพของคุณ...</h6>
+                <input type="file" class="text-center center-block file-upload" name="img">
+                <button type="submit" class="btn-success" name="submit">ตกลง</button>
+            </div></hr><br>
+            
+        </div><!--/col-3-->
+    </form>
     	<div class="col-sm-9 layout-content">
           <div class="tab-content">
             <div class="tab-pane active" id="home">

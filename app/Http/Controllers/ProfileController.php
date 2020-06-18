@@ -40,6 +40,9 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+        // echo ("อัพโหลดเรียบร้อย...");
+        $path=$request->file('img')->store('imgupload');
+        return ['path'=>$path,'upload'=>'success'];
     }
 
     /**

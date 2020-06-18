@@ -10,7 +10,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="form-group row layoutname">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อ-สกุล') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right-re">{{ __('ชื่อ-สกุล') }}</label>
                                 <div class="col-md-6 layoutinput">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="กรอกชื่อนามสกุลของคุณ">
                                     @error('name')
@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="form-group row layoutname">
-                                <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('เพศ') }}</label>
+                                <label for="gender" class="col-md-4 col-form-label text-md-right-re">{{ __('เพศ') }}</label>
                                 <div class="col-md-6 layoutinput">
                                     <select name="gender" id="" class="layoutgender-size form-control @error('gender') is-invalid @enderror">
                                         <option value="">เลือกเพศ</option>
@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="form-group row layoutname layoutname-top">
-                                <label for="province" class=" col-md-4 col-form-label text-md-right">{{ __('จังหวัด') }}</label>
+                                <label for="province" class=" col-md-4 col-form-label text-md-right-re">{{ __('จังหวัด') }}</label>
                                 <div class="col-md-6 layoutinput">
                                     <select name="province" id="" class="layoutprovince-size form-control @error('name') is-invalid @enderror">
                                         <option value="">เลือกจังหวัด</option>
@@ -128,7 +128,7 @@
                             </div>
 
                             <div class="form-group row layoutname">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('อีเมล') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right-re">{{ __('อีเมล') }}</label>
                                 <div class="col-md-6 layoutinput">
                                     <input id="email" type="email" class="layoutnom-size form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="name@mail.com">
                                     @error('email')
@@ -140,7 +140,7 @@
                             </div>
 
                             <div class="form-group row layoutname layoutname-top">
-                                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('ตั้งชื่อผู้ใช้') }}</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-right-re">{{ __('ตั้งชื่อผู้ใช้') }}</label>
                                 <div class="col-md-6 layoutinput">
                                     <input id="username" type="text" class="layoutnom-size form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="ตั้งชื่อผู้ใช้">
                                     @error('username')
@@ -152,7 +152,7 @@
                             </div>
 
                             <div class="form-group row layoutname">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('ตั่งรหัสผ่าน') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right-re">{{ __('ตั่งรหัสผ่าน') }}</label>
                                 <div class="col-md-6 layoutinput">
                                     <input id="password" type="password" class="layoutnom-size form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="ตั้งรหัสผ่านอย่างน้อย 8 ตัว">
                                     @error('password')
@@ -164,19 +164,22 @@
                             </div>
 
                             <div class="form-group row layoutname layoutname-top">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('ยืนยันรหัสผ่าน') }}</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right-re">{{ __('ยืนยันรหัสผ่าน') }}</label>
 
                                 <div class="col-md-6 layoutinput">
                                     <input id="password-confirm" type="password" class="layoutnom-size form-control" name="password_confirmation" required autocomplete="new-password" placeholder="กรอกรหัสผ่านอีกครั้ง">
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0 layoutbutton-ok col-md-8 offset-md-4">
+                            <div class="form-group row mb-0 layoutbutton-ok col-md-8 offset-md-4" style="margin-left:200px;">
                                     <button type="submit" class=" btn btn-success " href="{{ route('login') }}" >
                                         {{ __('ยืนยัน') }}
                                     </button>
                             </div>
                         </form>
+                        <div class="col-md-8 offset-md-4 ">
+                            <a href="homeBD"><button class="btn btn-primary-ok-back sizebutton-re ">กลับ</button></a>
+                        </div>
                     </div>
                 </div>
             </div>

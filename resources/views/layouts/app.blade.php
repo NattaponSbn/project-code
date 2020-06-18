@@ -19,8 +19,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
+    <style>
+        .bodylog {
+            background-image: url("img/background-body-addproject-4.jpg");
+        }
+
+    </style>
+
 </head>
-<body>
+<body class="bodylog">
     <div id="app">
         <nav class="">
             <div class="container">
@@ -62,9 +69,6 @@
                 </div>
             </div>
         </nav>
-        <div class="col-md-8 offset-md-4 ">
-            <a href="homeBD"><button class="btn btn-primary-ok-back sizebutton ">กลับ</button></a>
-        </div>
         <main class="py-4">
             @yield('content')
         </main>

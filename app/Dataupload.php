@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dataproject extends Model
+class Dataupload extends Model
 {
     //
-    protected $table = 'addproject';
-
+    protected $table = 'fileupload';
 }

@@ -40,6 +40,7 @@ class DatauserController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**

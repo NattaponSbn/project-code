@@ -20,6 +20,9 @@ Route::get('homeMDD', function () {
     return view('homeMDD');
 });
 
+
+// Route::get('db', 'ListdataController@addproject');
+
 Route::get('Newarrival', 'ListdataController@Newarrivaldata');
 
 Route::get('Popular', function () {
@@ -42,9 +45,13 @@ Route::get('game', function () {
     return view('wedType.game');
 });
 
-// Route::view('addproject', 'addproject');
+
 Route::view('addproject', 'addproject');
-Route::get('submit', 'inputprojectController@save') ;
+Route::post('adddataproject', 'ListdataController@addproject');
+// Route::post('adddataproject', 'ListdataController@addfileproject');
+// Route::post('adddataproject', 'ListdataController@addproject')->name('addproject');
+// Route::get('process', 'inputprojectController@addproject') ;
+// Route::post('dataproject', 'ListdataController@dataproject');
 
 
 Route::get('admin', function () {
@@ -84,6 +91,11 @@ Route::post('edit/{id}', 'DatauserController@edit');
 
 Route::get('profile','ProfileController@edit')->name('edit');
 Route::post('profile', 'ProfileController@update')->name('update');
+Route::post('uploadimg', 'ProfileController@store')->name('store');
+// Route::get('uploadimg', function () {
+//     dd(request()->all());
+// });
+
 
 // Route::get('homeBD', 'ListdataController@Data');
 

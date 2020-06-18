@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="img-down">
     <head>
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -63,27 +63,27 @@
                 margin-left: 90px;
            }
 
-           body {
-               background-image: url("img/background-body.jpg");
+           .img-top {
+               background-image: url("img/background-body-addproject-5.jpg");
                height: 100%; 
                background-position: center;
                background-repeat: no-repeat;
                background-size: cover;
            }
 
-           html {
-               background-image: url("img/background-body-left.jpg");
+           .img-down {
+               background-image: url("img/background-body-addproject-2.jpg");
                height: 100%; 
                background-position: center 550px;
                background-repeat: no-repeat;
                background-size: cover;
            }
-               
-           
+
 
         </style>
     </head>
-    <body class="app sidebar-mini " >
+    <body class="img-top">
+    <div class="app sidebar-mini " >
         <header class="app-header">
             <a href="homeBD" class="app-header__logo" >ICTSTORE</a>
             <!-- main.css-->
@@ -164,11 +164,12 @@
                                                     <button type="button" class="btn-control btn-default" ><a href="homeMDD">ปริญญาเอก โท</a> </button>
                                                 </div><br>
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
-                                                        > เว็บ
+                                                        >  เว็บ
                                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                                     </a>
                                                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                                                <a class="nav-link" href="wed">ทั้งหมด</a>
                                                                 <a class="nav-link" href="#">ติดตาม</a>
                                                                 <a class="nav-link" href="#">ดูเเละสุขภาพ</a>
                                                                 <a class="nav-link" href="#">ไร่สวน</a>
@@ -181,6 +182,7 @@
                                                     </a>
                                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                                         <nav class="sb-sidenav-menu-nested nav ">
+                                                            <a class="nav-link" href="wedapp">ทั้งหมด</a>
                                                             <a class="nav-link" href="#">ติดตาม</a>
                                                             <a class="nav-link" href="#">ดูเเละสุขภาพ</a>
                                                             <a class="nav-link" href="#">ไร่สวน</a>
@@ -192,6 +194,7 @@
                                                     ></a>
                                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                                         <nav class="sb-sidenav-menu-nested nav">
+                                                            <a class="nav-link" href="app">ทั้งหมด</a>
                                                             <a class="nav-link" href="#">ติดตาม</a>
                                                             <a class="nav-link" href="#">ดูเเละสุขภาพ</a>
                                                             <a class="nav-link" href="#">ไร่สวน</a>
@@ -203,6 +206,7 @@
                                                     ></a>
                                                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                                         <nav class="sb-sidenav-menu-nested nav">
+                                                            <a class="nav-link" href="game">ทั้งหมด</a>
                                                             <a class="nav-link" href="#">ผจญภัย</a>
                                                             <a class="nav-link" href="#">ยุทธศาสตร์</a>
                                                             <a class="nav-link" href="#">ปริศนา</a>
@@ -245,10 +249,11 @@
                 </ul>
                     
                 </aside>
-
                 <div>@yield('content')</div>
 
-                
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -269,7 +274,15 @@
         <!-- The javascript plugin to display page loading on top-->
         <script src="js/plugins/pace.min.js"></script>
         <!-- Page specific javascripts-->
-        
-        
+        <script>
+            $(window).scroll(function(){
+                var scroll = $(window).scrollTop();
+                $(".img-down .img-top").css({
+                    width: (100 + scroll/5) + "%"
+                })
+            })
+        </script>
+    </div>
+    
     </body>
 </html>

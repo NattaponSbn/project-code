@@ -75,8 +75,7 @@ html, body {
 
 .layoutlogre {
   color: rgba(255, 255, 255, 0.9);
-  padding: 0%;
-  margin: 5%;
+  
 }
 
 .front {
@@ -138,6 +137,8 @@ body {
   color: #212529;
   text-align: left;
   background-color: #582B9E;
+  
+
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -663,6 +664,7 @@ pre code {
   padding-left: 50px;
   margin-right: auto;
   margin-left: 0%;
+  margin-top: ;
   
 }
 
@@ -980,7 +982,7 @@ pre code {
   font-size: 25px;
   margin-top: 10px;
   margin-left: 25px;
-  color: #fff;
+  color: black;
 }
 
 .textimg {
@@ -1021,7 +1023,7 @@ pre code {
   margin-left: 40px;
   margin-right: 50px;
   margin-top: 25px;
-  width: 230px;
+  width: 220px;
   height: 300px;
   background-color: #fff;
   
@@ -1032,7 +1034,7 @@ pre code {
   margin-left: 20px;
   margin-right: 50px;
   margin-top: 25px;
-  width: 230px;
+  width: 220px;
   height: 300px;
   background-color: #fff; 
 }
@@ -1042,7 +1044,7 @@ pre code {
   margin-left: 20px;
   margin-right: 50px;
   margin-top: 25px;
-  width: 230px;
+  width: 220px;
   height: 300px;
   background-color: #fff; 
 }
@@ -1052,14 +1054,14 @@ pre code {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 25px;
-  width: 230px;
+  width: 220px;
   height: 300px;
   background-color: #fff; 
 }
 
 /* ข้างในของ คอลััม */
 .columnimg {
-  margin-left: 30px;
+  margin-left: 25px;
   margin-right: 35px;
   margin-top: 25px;
   width: 170px;
@@ -2810,12 +2812,12 @@ textarea.form-control {
 
 
 .layoutgender-size {
-  width: 30%;
+  width: 32%;
   
 }
 
 .layoutprovince-size {
-  width: 30%;
+  width: 42%;
 }
 
 .layoutnom-size {
@@ -2867,7 +2869,8 @@ textarea.form-control {
 
 .form-check-label {
   margin-bottom: 0;
-  color: white;
+  color: rgb(27, 122, 211);
+
 }
 
 .form-check-inline {
@@ -3267,9 +3270,24 @@ fieldset:disabled a.btn {
 }
 
 .sizebutton {
-  width: 10%;
-  margin-top: 20px;
-  margin-left: -480px;
+  width: 28%;
+  height: 44.9px;
+  margin-top: -133px;
+  margin-left: 120px;
+  font-size: 18px;
+}
+
+.sizebutton-re {
+  width: 23%;
+  height: 43px;
+  margin-top: -91px;
+  margin-left: 105px;
+  font-size: 18px;
+}
+
+.btn-re {
+  margin-top: 70px;
+  margin-left: -200px;
 }
 
 .layoutbutton {
@@ -5614,10 +5632,10 @@ input[type=button].btn-block {
 }
 
 .card-header {
+  margin-top: 5px;
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  color: black;
   text-align: center;
   margin-top: 10px;
  
@@ -11198,9 +11216,20 @@ button.bg-dark:focus {
   }
 
   .text-md-right {
-    text-align: right !important;
-    color: white;
+    margin-left: 130px;
+    margin-right: -135px;
+    color: black;
   }
+
+  .text-md-right-re {
+    margin-left: 150px;
+    margin-right: -135px;
+    color: black;
+  }
+
+  .btn-layouts{
+    margin-left: -70px;
+}
 
   .text-md-center {
     text-align: center !important;
